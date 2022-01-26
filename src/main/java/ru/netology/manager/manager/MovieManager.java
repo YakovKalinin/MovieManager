@@ -7,7 +7,7 @@ public class MovieManager {
     private int numberOfMovie;
 
     public MovieManager(int numberOfMovie) {
-        this.numberOfMovie = numberOfMovie;
+        this.numberOfMovie = 10;
     }
 
     public MovieManager() {
@@ -25,21 +25,24 @@ public class MovieManager {
 
     }
 
-    public Movie[] viewAllMovie (int numberOfMovie) {
-        if (movies.length > numberOfMovie) {
-            Movie[] result = new Movie[numberOfMovie];
-            for (int i = 0; i <= result.length; i++) {
+    public Movie[] lastMovie (int numberOfMovie) {
+        if (movies.length < numberOfMovie) {
+            Movie[] result = new Movie[movies.length];
+            for (int i = 0; i < result.length; i++) {
                 int index = movies.length - i - 1;
                 result[i] = movies[index];
             }
             return result;
         } else {
-            Movie[] result = new Movie[movies.length];
-            for (int i = 0; i <= result.length; i++) {
+            Movie[] result = new Movie[numberOfMovie];
+            for (int i = 0; i < result.length; i++) {
                 int index = movies.length - i - 1;
-                result[i] = movies[index];
+                 result[i] = movies[index];
             }
             return result;
         }
+    }
+    public Movie[] findAll() {
+        return movies;
     }
 }
