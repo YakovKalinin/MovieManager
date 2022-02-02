@@ -14,13 +14,11 @@ public class MovieManager {
     }
 
     public void addMovie(Movie movie) {
-        int length = movies.length + 1;
-        Movie[] tmp = new Movie[length];
+        Movie[] tmp = new Movie[movies.length + 1];
         for (int i = 0; i < movies.length; i++) {
             tmp[i] = movies[i];
         }
-        int lastMovie = tmp.length - 1;
-        tmp[lastMovie] = movie;
+        tmp[tmp.length - 1] = movie;
         movies = tmp;
 
     }
@@ -29,19 +27,20 @@ public class MovieManager {
         if (movies.length < numberOfMovie) {
             Movie[] result = new Movie[movies.length];
             for (int i = 0; i < result.length; i++) {
-                int index = movies.length - i - 1;
-                result[i] = movies[index];
+                result[i] = movies[movies.length - i - 1];
             }
             return result;
         } else {
-            Movie[] result = new Movie[numberOfMovie];
-            for (int i = 0; i < result.length; i++) {
-                int index = movies.length - i - 1;
-                result[i] = movies[index];
+            {
+                Movie[] result = new Movie[numberOfMovie];
+                for (int i = 0; i < result.length; i++) {
+                    result[i] = movies[movies.length - i - 1];
+                }
+                return result;
             }
-            return result;
         }
     }
+
 
     public Movie[] findAll() {
         return movies;
